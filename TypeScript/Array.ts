@@ -32,6 +32,7 @@ let arr_Temp12 = ["j","a","v","a"," ","s","c","r","i","p","t"," ","c","o","d","e
 let str_Temp = arr_Temp12.join("")
 console.log(str_Temp)
 
+
 // let t = str_Temp.replaceAll("#","")
 // console.log(t)
 
