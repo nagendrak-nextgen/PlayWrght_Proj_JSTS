@@ -20,3 +20,26 @@
     O/P = "java script code"
 
 */
+
+
+//########################## Assignment 1 ##########################
+let arr_Array_Ass1 = [1,2,3,4,5,6,7,8]
+	//************* Method 1  - Using for loop *************
+	/*for (let i = 0; i<arr_Array_Ass1.length; i++)
+	{
+		console.log(arr_Array_Ass1[i])
+	}*/
+
+	//************* Method 2 - Using for of loop *************
+	/*for (let e of arr_Array_Ass1)
+	{
+		console.log(e)
+	}*/
+
+	//************* Method 3 - Using while loop *************
+	let int_cnt = 0
+	while (int_cnt < arr_Array_Ass1.length)
+	{
+		console.log(arr_Array_Ass1[int_cnt])
+		int_cnt+= 1
+	}
