@@ -1,0 +1,359 @@
+/*
+Day 0: Environment setup
+	To begin with JS or TS we need to install below Software
+	
+	1. Install Visual Studio
+	2. Install Node JS
+	3. Install TypeScript
+	4. Install TSX
+	
+Day 3
+
+Difference between VAR and LET
+VAR - 1. Scope is global or within function
+		2. We can declare same variable multiple times
+			var name = nagendra
+			var name = shyam
+			var name = lata ... etc
+			
+			var name = "nagendra"
+			if(true)
+			{
+				var name = "shyam"
+			}
+			console.log(name) O/P - shyam
+			the value nagendra will be overwriten with shyam
+			
+		
+
+Data Types
+1. Premitive (all are lower case characters)
+	a. number
+	b. string
+	c. boolean
+	d. null
+	e. undefined
+	
+	f. any (any type of data can be assigned to this data type)
+		any val
+		val = "nagendra", val = 29, val
+	g. union (|) (eg - let ver : number | string = 10)
+	h. void (function)
+	NOTE - a to e are common in both JS & TS but f,g,h are only for TS.
+	
+1. Non-Premitive (Starting character is Capital)
+	a. Arraty
+	b. Object
+	c. String
+	d. Functions
+	
+	TypeOf (operator) - used to find the variable type
+	Data Type Annotation - whenever you define the data type of variable explicitly is know as Type Annotation. This is available only in TS
+		EX - let num : number = 10
+	Type Inference - when JS/TS is able to identify the datatype of a variable implicitly (depending on the value stored in the variable). it is know as Type Inference
+		Ex - let num = 10
+		
+different ways to declare a variable
+	1. let age (undefined variable)
+	2. let age : number = 24
+	3. let Empid : number | string = "F123" (in this case this will assow number or string)
+	4. let age = null
+		
+differnt ways to define string
+	1. Single Quote (')
+	2. Double Quote (")
+	3. Backtick (`) - this is used when we work with muliline string and concatinating variable to a string and peramiterizing a value
+						let age = 23
+						console.log("Your age is ${age}") - O/P - This will throw error
+						console.log(`Your age is ${age}`) - O/P - Your age is 24
+						
+	
+	
+***************** Day 4: ***************** 
+Operators
+	1. Artghemetic
+		1. Addition
+		2. Substraction
+		3. Multiplication
+		4. Division
+		5. Modulus (%)
+		6. Exponential (**)
+		7. Increment (++)
+		8. Decrement (--)
+		
+	2. Comparison
+		1. ==
+		2. !=
+		3. === (Strict Equal To - it will compare the value and also data type. if both are matching then will return TRUE)
+		4. !== (Strict Not Equal To)
+		
+	3. Logical (&&, ||, !)
+	4. Ternary
+	
+	
+	Type Conversion (force conversion eg. Cint etc) and Type coersion (automatically happens in code)
+	
+***************** Day 5 & 6: Condition Statement: ***************** 
+	
+	1. if(<condition>)
+		{
+		}
+	2. if(<condition>)
+		{
+		}
+		else
+		{
+		}
+	3. if(<condition>)
+		{
+		}
+		else if(<condition>)
+		{
+		}
+		else
+		{
+		}
+	4. Switch ()
+		{
+			case "A":
+				break
+			case "B":
+				break			
+			default:
+		}
+	5. (10>5)? "10 is greater than 5" : "5 is greater than 10"
+	
+***************** Day 7: Loops ***************** 
+	1. for(let i=1; i<10; i++) (Tredetional Loop)
+		{
+		}
+	2. for.... of loop - Works for Array
+		for(let element of arr_Temp)
+		{
+			console.log(element)
+		}
+	3. for.... in loop - works for Object
+	4. While Loop
+		While (Condition)
+		{
+		}
+	5. Do While Loop
+		Do
+		{
+		} while(Condition)
+
+***************** Day 8: Functions ***************** 
+	1. Named Function - Function decrlaration - Function which will have name on it
+	2. Anonymous Function - Function expression - Function which will not have any name
+	3. Arrow Function (=>) - 
+	4. Constructor Function - 
+	
+	Q: What is the difference between function declaration and function expressoin
+		Ans : - Expression - a complete statement is called Expression
+				Function Expression - When you assign function to a variable, it is called as Function expression
+	
+	Named Function Syntax
+		1. Function Fname(arg1, arg2)
+			{
+			}
+		2. Function Fname(arg1:string,arg2:number)
+			{
+			}
+		3. Function Fname (arg1, arg2) : return daatype
+			{
+				return arg1
+			}
+		4. Function Fname (arg1, arg2) : void
+			{
+				Console.log("Hi")
+			}
+			
+***************** Day 9: Call Back Functions ***************** 
+
+		Q. What is call back function
+			Ans - A function which is declared as a paramater to another function is called as call back function
+	Anonymous Function Syntax
+		1. let/const variablename = Function(parameters)
+									{
+										code
+									}
+									
+			variablename(parameter)
+		2. function add(a:number, func:function)
+			{
+				return func
+			}
+			
+			add(10,async function(){})		//in this line "function" is known as call back function
+				
+				Example:
+				function add(a, func:function)
+				{
+					const b = 20
+					const c = 30
+					console.log( a + func(b,c))
+				}
+				
+				add(10, async function(b,c){return b + c })
+	
+	Types of parameters
+		1. Default Parameter
+		2. Option Parameter (Only part of Type script)
+		3. Rest Parameter 
+	
+***************** Day 10: Functions ***************** 
+	Arrow Function
+	1. (Parameters) => Single Statement ({} not required for single line statement)
+		NOTE - return keyword is not required if "{}" is not mentioned in the function
+	2. (Parameters) => {
+			Multiple Statement
+		}
+		
+	Q. What is the difference between Named Function and Anonymous function
+	Ans. 1. Anonymous function will not have function name but named function will have name
+		2. Named function can be called either before or after the function definition where as anonymous function should be called only after the function definition.
+		
+***************** Day 11: Function Parameters ***************** 
+	Types of parameters
+		1. Default Parameter
+			function arthematicoperation(num1:number,num2:number,operator:string="ADD")
+			{
+				switch (operator.toUpperCase())
+				{
+					case "ADD":
+						console.log(`${operator} of ${num1} and ${num2} is - `,num1 + num2)
+						break
+					case "SUB":
+						console.log(`${operator} of ${num1} and ${num2} is - `, num1-num2)
+						break
+					case "MUL":
+						console.log(`${operator} of ${num1} and ${num2} is - `, num1*num2)
+						break
+					default:
+						console.log(`${operator} operatgor is not in the list. please correct`)
+				}  
+			}
+			
+			arthematicoperation(10,2)
+			arthematicoperation(10,2,"add")
+			arthematicoperation(10,2,"mul")
+			arthematicoperation(10,2,"nag")
+	
+		2. Option Parameter (Only part of Type script)
+			function AddingMultipleNumbers(num1:number,num2:number,num3?:number,num4?:number)
+			{
+				let sum = 0
+				if (num3 !=undefined)
+				{
+				   sum += num3 
+				}
+
+			 if (num4 !=undefined)
+				{
+				   sum += num4
+				}
+				console.log(num1+num2+sum)
+			}
+			
+			AddingMultipleNumbers(1,2)
+			AddingMultipleNumbers(1,2,3)
+			AddingMultipleNumbers(1,2,3,4)
+			
+		3. Rest Parameter 
+			function AddingMultipleValues(a:number,...num:number[])
+			{
+				let sum = 0
+			   for (let e of num)
+			   {
+					sum += e
+			   }
+				console.log("Addition using Rest Parameters - ",sum)
+			}
+
+			AddingMultipleValues(1,1,2,3,4,5)
+***************** Day 12: .... Array ***************** 
+Declaring Array
+1. Using Array Literal (Square brackets)
+	let arr_Temp = [1,3,4,5,6]
+	let arr_Temp : number[] = [1,3,4,5,6]
+	let arr_Temp = []
+	
+	Working with an Array
+	adding value - arr_Temp[0] = 52
+	reading value - console.log(arr_Temp[0])
+	array length - arr_Temp.length
+	Checking if array - array.isarray(arr_Temp)
+
+2. Using Array Constructor (using New keyword)
+	let arr_Temp = new Array(val1, val2, val3)
+	let arr_Temp = new Array<any>(1, 5, "Hi")	- DataType - any
+	let arr_Temp = new Array<number>(1, 5, 3) 	- DataType - number
+	let arr_Temp = new Array(1, 5, "Hi")	- DataType - number (the data type in this case will be the datatype of first index value)
+
+***************** Day13: Array Methods *****************
+Property:
+	1. Length
+Methods:
+	1. Push - appends the elements at the end of an array
+		e.g - arr_Temp.Push (12,15,2,"hi")
+	2. Pop - Removes the last element from an array
+		arr_Temp.Push()
+	3. unshift - adds the elements at the begining of the array
+		e.g - arr_Temp.unshift(23,"my")
+	4. shift - removes first element from an array
+		e.g - arr_Temp.shift()
+	5. splice - used to update specific element/elements of an array
+		e.g - arr_Temp.splice(startIndex, deletecount, new values)
+			arr_Temp.splice(3,2,56,"nag","kum") - (3 - from 3rd element, 2 - delete 2 elements from 3rd index)
+			arr_Temp.splice(3,2) - (3 - from 3rd element, 2 - delete 2 elements from 3rd index and do not add any new values)
+	5. slice - used to get few element values from an array (in sequence)
+		e.g - arr_Temp.slice(startindex,endindex)
+			arr_Temp.slice(2,5)
+	6. IndexOf - returns the index of first occurance of a given value
+	
+	
+Day14: Array Methods
+	7. LastIndexOf - provides last occurance in an array
+		arr_Temp.LastIndexOf("hi")
+	8. Concat - combiles multiple arrays.
+		arr_Temp.Concat(arr_T1,arr_T2,arr_T3) - O/P - arr_Temp value is concatinated with arr_T1, T2 T3 array values
+	9. Join - Joins the elements of an array with delimiter
+		arr_Temp.Join("#")
+	10. ToString - converts array to string with "," as delimiter
+	11. includes - 
+	12. foreach - 
+	13. Map
+	
+Day15: Array Methods
+	14. Filter - it will iterate over the element of an array and return a new array based on the condition that you write inside the function.
+	15. Reduce
+	16. Some
+	17. every
+
+Day16: String Methods
+	1. Length
+	2. CharAt
+	3. concat
+	4. includes
+	5. indexOf
+	6. lastIndexOf
+	7. slice - Startindex is optional and endindex is optional
+	8. substing - 
+		Q. Difference between Slice and Substing?
+		Ans - 1. Startindex is mandatory and endindex is optional for Substring. But for slice both Startindex and endindex is optional
+			  2. if the start index is grater than end index, then Substring will reverse the index automatically. but slice will blank/empty as output
+	9. Startswith 
+	10. Endswith
+	11. touppercase
+	12. tolowercase
+	13. Split
+	14. Trim
+	16. TrimStart
+	17. TrimEnd
+	
+	Improve Spelling
+	1. https://www.youtube.com/watch?v=uKzvpopTFfM
+
+
+
+*/

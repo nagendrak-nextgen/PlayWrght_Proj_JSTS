@@ -23,6 +23,7 @@
 
 
 //########################## Assignment 1 ##########################
+//display all the elements in an array using for loop, for of loop and while loop.
 let arr_Array_Ass1 = [1,2,3,4,5,6,7,8]
 	//************* Method 1  - Using for loop *************
 	/*for (let i = 0; i<arr_Array_Ass1.length; i++)
@@ -37,9 +38,12 @@ let arr_Array_Ass1 = [1,2,3,4,5,6,7,8]
 	}*/
 
 	//************* Method 3 - Using while loop *************
-	let int_cnt = 0
+	/*let int_cnt = 0
 	while (int_cnt < arr_Array_Ass1.length)
 	{
 		console.log(arr_Array_Ass1[int_cnt])
 		int_cnt+= 1
-	}
+	}*/
+
+	//########################## Assignment 2 ##########################
+	//display even numbers in an array
