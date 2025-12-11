@@ -1,0 +1,205 @@
+/*
+
+Day 0: PlayWright Setup
+	npm - Node packaging manager
+	Q: Different ways we can install sowftware
+	Ans: 1. npn install <<library name>>
+		2. npn i <<library name>>
+		3. npn init <<library name (Recomended)>>
+		
+	Installing Playwrigt
+	1. npm init playwright (installs latest version)
+	2. npm init playwright@1.56.1 (Install Specific version)
+	3. npm init playwright@latest (install latest version)
+	3. npm init playwright@latest (install latest version)
+		
+	Commands will use in PlayWright
+	1. npx playwright test - to run end to end test
+	2. npx playwright test --ui - Start the interactive UI mode
+	3. npx playwright test --project=chromium - Runs the test only on Desktop chromium
+	4. npx playwright test --example - runs the test in specific file
+	5. npx playwright test --debug - Run test in debug mode
+	6. npx playwright test codegen - auto generate test with codegen
+	
+	PlayWright file details
+	1. github\workflows - this files contains the pipeline details linked to Github. all the tasks mentioned what to do when new DEV codebase is pushed to github
+	2. node_modules - it is the heart of the module. when we install playwright, this file will be created. if this file is deleted. Playwright will not work.
+		"./node_modules\playwright\test.mjs" this file contains list of all the files which we can import based on the need.
+	3. tests - this is the default location to write test scripts
+	4. tests-examples - contains sample tests 
+	5. .gitignore - Here we can mentions all the files which should not to pushed to GitHub.
+	6. package-lock.json - This files provides all the details of the playwright installation and dependencies done so far
+	7. package.json - This file is used to control the execution flow. something like regression suite.
+		"scripts": {} - This if where we will mention the execution flow
+	8. playwright.config.ts - Most important file. Most of the settings we will do in this file like headless mode, parallel execution etc.
+		 This will be explained in next session/video.
+	
+	
+	For any authorization for playWright, use below command
+		set-ExecutionPolicy -Scope CurrentUser
+		-ExecutionPolicy RemoteSigned
+		
+	Important files to refer in Playwright framework
+	1. PlayWrght_Proj_JSTS\node_modules\playwright\test.mjs
+	2. PlayWrght_Proj_JSTS\tests\example.spec.ts
+	
+Day 1:	Understanding Playwright configuration and Parallel testing
+	List of parameters we work with in this file
+	1. import { defineConfig, devices } from '@playwright/test'
+		In order to work with below parameters, we need to import respective packages/modules.
+		defineConfig & devices are mentioned in "./node_modules\playwright\test.mjs" file
+		
+	2. testDir
+		Path of the test script files. when we execute "npx playwright test" command, then playwright will execute 
+		all the test cases written under this path.
+
+	4. forbidOnly
+		if you are running scripts via CICD pipeline then in that case if anywhere if "this.only" is mentiond in any
+		of the test case then that particular test case will execute but the execution will fail. because regression
+		suite means executing multiple test cases, not only one test case.
+	5. retries
+		you can mention how many times you want to re-execute the failed test cases
+	
+	7. reporter - type of report you want to generate (html/list/dot/line/github/json/junit/null)
+	
+	8. Use - Play applies all the properties/settings inside this USE to each test case.
+		NOTE - what ever settings or rules you want to set at each test case level, need to be mentioned under "USE" 
+		keyword. "USE" keyword is also available under "Project"
+		
+		trace - off/on/on-first-retry/on-all-retries/retain-on-failure/retain-on-first-failure
+		screenshot - off/on/only-on-failure/on-first-failure
+		video - off/on/retain-on-failure/on-first-retry
+		headless - true/false (by default is is TRUE)
+		
+	9. projects - Browser details which Playwright supports (it supports 7 types of brwosers)
+	
+	3. fullyParallel
+	6. workers - describes how many test case should run in parallel
+		
+Day 2: Understanding Playwright Architecture, Test annotation and async-await concept
+		Playwright uses WebSockets to communicate with Browser
+		
+		************ Incomplete ************
+Day 3: Browser & Page fixture
+	Q: What is the difference between Browser & Page fixture
+	Ans : 1. Browser fixture will launch Browser only where as Page fixture will launch browser and page
+			2. Using Browser we can launch multiple pages on same broser context where as using page we can launch only one page
+			3. to do brwoser level settings we need to use Browser fixture only
+			4. if we use browser fixture, then we need to create instance of both browser and page inside the test function where as
+				if we use page fixture, then no need to create instance of either of them.
+	Q: Where to find different version of Playwritht
+	Ans : Search for "Playwright version history" in google and select "release note" (playwright.dev/docs/release-notes)
+
+	Q. What is the use of a FIXTURE
+	Ans-Fixtures are playwright features which performs certain actions without being called such as 
+		Browser fixer will launch the browser without calling it and also closes the browser at the end
+		of the execution automatically 
+
+	Q. How to run a test
+	Ans - npx playwright test "test file name including the extension"
+					e.g - npx playwright test "TestScript.spec.ts"
+
+	Q. How to create browser and page context
+	Ans - const browsercontxt = browser.newContext()
+    		const pagecontxt = (await browsercontxt).newPage()
+	
+	Q. Command to view the report
+	Ans - npx playwright show-report
+		
+		
+	************ Incomplete ************
+	
+Day 4: Locators - Understanding CSS Selector to write the Locator
+	Types of locators
+	1. Playwright specific locators (1st preference) 
+	2. CSS Selector (2nd Preference)
+	3. Xpath (least preference)
+	
+	CSS Selector:
+	1. id (#<<Id Value>>)
+		Syntax:
+			a. tagname#idvalue
+			b. #idvalue
+			c. [id='value']
+		NOTE - is the locator is found under <Script> tab then ingnore that locator
+	2. class (.<<attribute value>>)
+			Syntax:
+				a. .ClassValue
+				b. .ClassValue.ClassValue (if multiple class values are availabel for the object)
+				c. tagname.Classvalue
+				d. [class='classvalue']
+
+	3. any attribute ([attribute name='attribute value'])
+			Syntax:
+			a. TagName[attributeName='AttributeValue']
+			b. [attributeName='AttributeValue']
+			
+	4. Write CSS traversing from Parent to child
+			1. Parent locator <Single SPACE> Cild Locator....
+			2. page.Locator(.classvalue).first().click
+				page.Locator(.classValue).last().click
+				page.Locator(.classvalue).nth(4).click (Index starts from 0)
+	
+	Testing URl - https://rahulshettyacademy.com/seleniumPractise/#/
+	
+	
+
+	
+	
+
+
+Day Playwrite archetecture
+	Playwrite works on websocket archetecture instead of HTTP
+
+Questions:
+1. what is the difference between "async function" and function
+		function add(a:number, func:Function)
+			{
+				console.log("Sum of 3 numbers - ", a + await func(20,30))
+			}
+				
+		add(10, function(b: number, c: number){return b + c }) ----------------O/P - 60
+		add(12, async function(b: number, c: number){return b + c }) ----------O/P - 12[object Promise]
+
+2. what is the difference between below two flows
+	function add(a:number, func:Function)
+ 				{
+ 					const b = 20
+ 					const c = 30
+ 					console.log("Sum of 3 numbers - ", a + func(20,30))
+ 				}
+				
+	a. add(10, function (b: number, c: number){return b + c })
+		
+	b. add(10, function name1(b: number, c: number){return b + c })
+				
+3. what is the difference between adding ";" and not adding ";"
+		e.g. - Console.log("Hi")
+				Console.log("Hi");
+				
+4. What is the difference between "Named function" and anonymous function (when assigned it to a variable as shown below)
+	a. function add(a,b)
+		{
+			console.log(a+b)
+		}
+	b. let add = function(a,b)
+				{
+					console.log(a+b)
+				}
+				
+4. What is GoCodeo-Build which is displayed in your editor.
+
+5. Do we have multidimention array consept
+6. What is the different ...Rest Parameter and array/any parameter
+7. Short cut for console.log
+************************ Done ******************************
+
+Day (12/09/2025) Handling Allerts
+	Types of alerts
+	1. Simple Alert
+	2. Confirm Alert
+	3. Prompt Alert
+
+
+
+*/
