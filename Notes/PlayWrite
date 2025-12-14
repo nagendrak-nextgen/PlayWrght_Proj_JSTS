@@ -139,14 +139,78 @@ Day 4: Locators - Understanding CSS Selector to write the Locator
 			2. page.Locator(.classvalue).first().click
 				page.Locator(.classValue).last().click
 				page.Locator(.classvalue).nth(4).click (Index starts from 0)
+			NOTE - Playwright wont support child to parent approach and also it wont support traversing to siblings
 	
 	Testing URl - https://rahulshettyacademy.com/seleniumPractise/#/
-	
-	
 
-	
-	
+Day 5 - Understanding xpath and Playwright specific getBy locators
+	Locators using XPath
+			1. //*[@attributeName='attributeValue'] (//* - this will start searching from top)
+				e.g - //*[@id='password']
+			2. //tagname[@attributeName='attributeValue'] (//tagname - this will start searching from the first occurance of the mentioned tag)
+				e.g - //input[@id='password']
+					//input[@id='password'][2] (2 is an index)
+					NOTE :
+						1. in XPath index starts with 1
+						2. in XPath if we are using class value as a locator then we need to provide all the class values given for that particular object
 
+			3. Parent to child
+				a. Parent to first child
+					//tagname[@attributeName = 'attributevalue']/child object locator
+					e.g - //div[@class = 'practive-form']/label
+				b. Parent to any child
+					//tagname[@attributeName = 'attributevalue']//child object locator
+					e.g - //div[@class = 'practive-form']//label
+			4. identifying following and preceeding sibling
+							//tagname[@attributename = 'attributevalue']//following-sibling::child object locator
+							e.g - //label[@for='username']//following-sipling::label
+
+							//tagname[@attributename = 'attributevalue']//preceding-sibling::child object locator
+							e.g - //label[@for='username']//preceding-sipling::label
+			5.Child to parent
+							//tagname[@attributename = 'attributevalue']//parent::parent object locator
+							e.g - //label[@for='username']//parent::div
+			6. Child to grand parent
+							//tagname[@attributename = 'attributevalue']//ancestor::grandparent object locator
+							e.g - //label[@for='username']//ancestor::section[2]
+			7. Identifying by text value
+							//tagname[text()='text value']
+							//tagname[text()='text value'][2]
+							//tagname[contains(text(),'text value')]
+							//*[contains(text(),'text value')]
+
+	PlayWright Build-In locators
+		Playwright has 7 build-in locators
+			1. getByRole ---> identify the element based on the role
+			2. getByText ---> identify the element with its text
+			3. getByPlaceholder ---> identify element using 'placeholder' arrtibute. this attribute is available only for text box.
+			4. getByTestId ---> identify element using 'data-testid' attribute.
+			5. getByAltText ---> Inentify image element using 'Alt' attribute
+			6. getByTitle ---> identify element using 'Title' attribute
+			7. getByLabel ---> identify element using 'label' tag
+
+			1. getByRole
+			2. getByText
+				a. getByText('expected string') ---> this will verify instring
+				b. getByText('expected string', {exact: true}) ---> this will verify exact match
+			3. getByPlaceholder
+				getByPlaceholder('place holder value')
+			4. getByTestId
+				getByyTestId('test id value')
+			5. getByAltText
+				getByAltText('value of Alt attribute')
+			6. getByTitle
+				getByTitle('value of Title attribute')
+			7. getByLabel
+				we use this method in 2 situations
+				a. when you have 'for' as an attribute for an element that have been developped using 'label' tag.
+					getBylabel('lable text')
+				b. when you find <input> tag inside 'label' tag element
+
+				NOTE - In the UI, for any text field when you click on the label next to the specific text/edit field and the 
+					curser blinkas in the text/edit field then we can use this method
+
+  
 
 Day Playwrite archetecture
 	Playwrite works on websocket archetecture instead of HTTP

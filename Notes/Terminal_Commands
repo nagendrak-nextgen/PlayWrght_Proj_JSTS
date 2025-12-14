@@ -1,0 +1,4 @@
+npx playwright test ----> will run all 
+npx playwright codegen "<URL of the application>" ----> it will open browser and play inspector tool
+npx playwright test -g "title of the specific test" ----> this command will execute the test case with mentioned title
+npx playwright show-report ----> to display report
