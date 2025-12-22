@@ -196,7 +196,7 @@ Day 5 - Understanding xpath and Playwright specific getBy locators
 			3. getByPlaceholder
 				getByPlaceholder('place holder value')
 			4. getByTestId
-				getByyTestId('test id value')
+				getByTestId('test id value') ---> we need to assign data-testid attribute to this method
 			5. getByAltText
 				getByAltText('value of Alt attribute')
 			6. getByTitle
@@ -210,10 +210,31 @@ Day 5 - Understanding xpath and Playwright specific getBy locators
 				NOTE - In the UI, for any text field when you click on the label next to the specific text/edit field and the 
 					curser blinkas in the text/edit field then we can use this method
 
+			First(), Last() & nth() Methods in Locators
+			page.Locator('.mr-sm-2').first() ---> it will match First matching element on the web page
+			page.Locator('.mr-sm-2').last() ---> it will match last matching element on the web page
+			page.Locator('.mr-sm-2').fnth(3) ---> it will match 4th matching element on the web page (Index starts with 0)
+
+Day 6 - 
+
   
 
 Day Playwrite archetecture
 	Playwrite works on websocket archetecture instead of HTTP
+
+Day 15 - Handling shadow dom and calendar using Playwright
+	Frames
+	Screenshot
+		1. page.screenshot(path:'screen_shot/s1.png')
+			this will store the screenshot of the page in this project under Screen_shot folder
+			if 'screen_shot' folder doesnot exist then it will create automatically and then store the image
+
+		2. page.screenshot(path:'screen_shot/s1.png', fullPage:true)
+				This will take the screenshot of entire page by scrolling down.
+
+
+
+
 
 Questions:
 1. what is the difference between "async function" and function
