@@ -17,5 +17,6 @@ test('Handling Multiple tabs', async ({page})=>
     await expect(page.locator('#email')).toBeVisible()
     await page.getByPlaceholder('Email id for Sign Up').highlight()
 
+    
 
 })

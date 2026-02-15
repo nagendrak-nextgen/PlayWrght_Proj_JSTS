@@ -1,4 +1,16 @@
-npx playwright test ----> will run all 
+
+npx playwright test ----> will run all test cases
 npx playwright codegen "<URL of the application>" ----> it will open browser and play inspector tool
 npx playwright test -g "title of the specific test" ----> this command will execute the test case with mentioned title
 npx playwright show-report ----> to display report
+npm install --save-dev dotenv ----> '--save-dev' this command will add dependency in package.json file after installing dotenv
+$env:ENV='qa'; npx playwright test -g 'Working with Assere' ---->first it will set environment value ENV to QA and then execute the test
+npx a
+
+Commands will use in PlayWright
+	1. npx playwright test - to run end to end test
+	2. npx playwright test --ui - Start the interactive UI mode
+	3. npx playwright test --project=chromium - Runs the test only on Desktop chromium
+	4. npx playwright test --example - runs the test in specific file
+	5. npx playwright test --debug - Run test in debug mode
+	6. npx playwright test codegen - auto generate test with codegen
